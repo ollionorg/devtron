@@ -1,0 +1,38 @@
+regions:
+# - global
+- ap-southeast-1
+ 
+blocklist:
+- "999999999999" # production
+
+resource-types:
+  includes:
+    - EC2VPC
+    - EC2Volume
+
+
+accounts:
+  '384157136238': #Developer Sandbox
+    presets:
+      - common
+
+accounts:
+  "384157136238":  #{} # cc-finance
+    filters:  #skip tag on resources, if use invert:true work oppsitely
+      EC2VPC:
+        - property: "tag:environment"
+          value: "test"
+          invert: true
+        - property: "tag:app"
+          value: "datapipes"
+          invert: true
+      EC2Volume:
+        - property: "tag:Name"
+          value: "prod"
+          invert: true
+
+
+# Command:
+# aws-nuke run -c test.yml --log-format=table  --profile finance
+# aws-nuke run -c test.yml --log-format=table  --profile finance --no-dry-run
+
