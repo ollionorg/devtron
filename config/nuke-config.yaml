@@ -10,14 +10,8 @@ resource-types:
     - EC2VPC
     - EC2Volume
 
-
 accounts:
-  '384157136238': #Developer Sandbox
-    presets:
-      - common
-
-accounts:
-  "384157136238":  #{} # cc-finance
+  "384157136238":  #{} # cc-dev-sandbox
     filters:  #skip tag on resources, if use invert:true work oppsitely
       EC2VPC:
         - property: "tag:environment"
@@ -28,7 +22,7 @@ accounts:
           invert: true
       EC2Volume:
         - property: "tag:Name"
-          value: "prod"
+          value: "test"
           invert: true
 
 
