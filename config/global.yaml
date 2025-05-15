@@ -47,12 +47,12 @@ presets:
   common:
     filters:
       __global__:
-        - property: tag:Name
+        - property: tag:app
           value: "datapipes"
-          invert: true
-        - property: tag:Environment
-          value: "sandbox"
-          invert: true
+          # invert: true
+        # - property: tag:Environment
+        #   value: "sandbox"
+        #   invert: true
         
 
 
