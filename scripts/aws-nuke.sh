@@ -17,7 +17,7 @@ elif [ "$ENV" = "trial" ]; then
 elif [ "$ENV" = "staging" ]; then
   CONFIG_FILE="staging.yaml"
 else
-  echo "Error: Unsupported ENV value '$ENV'. Supported values are 'dev', 'test', 'trial and 'staging' ".
+  echo " Error: Unsupported ENV value '$ENV'. Supported values are 'dev', 'test', 'trial and 'staging' "
   exit 1
 fi
 
@@ -33,5 +33,5 @@ wget https://github.com/ekristen/aws-nuke/releases/download/v3.52.2/aws-nuke-v3.
 tar -xvf aws-nuke-v3.52.2-linux-amd64.tar.gz
 chmod +x aws-nuke
 mv aws-nuke /usr/local/bin/aws-nuke
-aws-nuke nuke -c sourcecode/nuke-config/$CONFIG_FILE" --force | grep "would remove" 
+aws-nuke nuke -c "sourcecode/nuke-config/$CONFIG_FILE" --force | grep "would remove" 
 echo complete
