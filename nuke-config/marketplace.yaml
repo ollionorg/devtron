@@ -1,0 +1,85 @@
+regions:
+# - global
+- ap-southeast-1
+# - all
+
+ 
+blocklist:
+- "999999999999" #production
+
+
+resource-types:
+  excludes:
+    - S3Object # Excluded because S3 bucket removal handles removing all S3Objects
+    - ServiceCatalogTagOption # Excluded due to https://github.com/rebuy-de/aws-nuke/issues/515
+    - ServiceCatalogTagOptionPortfolioAttachment # Excluded due to https://github.com/rebuy-de/aws-nuke/issues/515
+    - FMSNotificationChannel # Excluded because it's not available
+    - FMSPolicy # Excluded because it's not available
+    - MachineLearningMLModel # Excluded due to ML being unavailable
+    - MachineLearningDataSource # Excluded due to ML being unavailable
+    - MachineLearningBranchPrediction # Excluded due to ML being unavailable
+    - MachineLearningEvaluation # Excluded due to ML being unavailable
+    - RoboMakerDeploymentJob # Deprecated Service
+    - RoboMakerFleet # Deprecated Service
+    - RoboMakerRobot # Deprecated Service
+    - RoboMakerSimulationJob
+    - RoboMakerRobotApplication
+    - RoboMakerSimulationApplication
+    - OpsWorksApp # Deprecated service
+    - OpsWorksInstance # Deprecated service
+    - OpsWorksLayer # Deprecated service
+    - OpsWorksUserProfile # Deprecated service
+    - OpsWorksCMBackup # Deprecated service
+    - OpsWorksCMServer # Deprecated service
+    - OpsWorksCMServerState # Deprecated service
+    - CodeStarProject # Deprecated service
+    - CodeStarConnection # Deprecated service
+    - CodeStarNotification # Deprecated service
+    - Cloud9Environment # Deprecated service
+    - CloudSearchDomain # Deprecated service
+    - RedshiftServerlessSnapshot # Deprecated service
+    - RedshiftServerlessNamespace # Deprecated service
+    - RedshiftServerlessWorkgroup # Deprecated service
+    - ElasticTranscoderPipeline # Deprecated service
+    - ElasticTranscoderPreset  # Deprecated service
+    - BedrockModelCustomizationJob 
+    - S3MultipartUpload
+    - ElasticacheReplicationGroup
+    - ElasticacheCacheParameterGroup
+    - DynamoDBTableItem
+    - KMSAlias
+    - GuardDutyDetector
+    - ElasticacheSubnetGroup
+    - RDSDBParameterGroup
+    - LambdaLayer
+    - SchedulerSchedule
+    - ConfigServiceConfigurationRecorder
+    - AutoScalingGroup
+    - CloudFormationStack
+
+
+
+
+presets:
+  common:
+    filters:
+      __global__:
+        - property: tag:app
+          value: "datapipes"
+          # invert: true
+        - property: tag:Name
+          value: "datapipes"
+        - property: tag:managedBy
+          value: "terraform"
+      EC2Volume:
+        - property: State
+          value: "in-use"
+        
+
+
+accounts:
+  '542830277533': #cc-marketplace
+    presets:
+      - common
+
+

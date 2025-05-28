@@ -16,8 +16,12 @@ elif [ "$ENV" = "trial" ]; then
   CONFIG_FILE="trial.yaml"
 elif [ "$ENV" = "staging" ]; then
   CONFIG_FILE="staging.yaml"
+elif [ "$ENV" = "production" ]; then
+  CONFIG_FILE="production.yaml"
+elif [ "$ENV" = "marketplace" ]; then
+  CONFIG_FILE="marketplace.yaml"
 else
-  echo " Error: Unsupported ENV value '$ENV'. Supported values are 'dev', 'test', 'trial and 'staging' "
+  echo " Error: Unsupported ENV value '$ENV'. Supported values are 'dev', 'test', 'trial, 'staging', 'production' and 'marketplace' "
   exit 1
 fi
 
